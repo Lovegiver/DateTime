@@ -13,5 +13,7 @@ public interface DateAndTimeManagementService {
     Date obtainDateAtStartOfDay();
     LocalDateTime obtainLocalDateTime();
     LocalDateTime obtainLocalDateTimeAtStartOfDay();
+    void switchTo(DateAndTimeManagementServiceImpl.TimeStyle style);
+    void switchTo(DateAndTimeManagementServiceImpl.TimeStyle style, LocalDateTime dateTime);
 
 }

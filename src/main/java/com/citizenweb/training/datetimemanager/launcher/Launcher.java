@@ -37,9 +37,31 @@ public class Launcher {
                 .nextVisit(dateTimeService.obtainLocalDateTime())
                 .build();
 
+        Thread.sleep(750);
+
+        dateTimeService.switchTo(DateAndTimeManagementServiceImpl.TimeStyle.REAL);
+
+        AnyObject obj4 = AnyObject.builder()
+                .nationalHealthId("01DE346")
+                .name("Fred")
+                .nextVisit(dateTimeService.obtainLocalDateTime())
+                .build();
+
+        Thread.sleep(750);
+
+        dateTimeService.switchTo(DateAndTimeManagementServiceImpl.TimeStyle.SIMULATED, simulatedDate);
+
+        AnyObject obj5 = AnyObject.builder()
+                .nationalHealthId("01YF107")
+                .name("Luis")
+                .nextVisit(dateTimeService.obtainLocalDateTime())
+                .build();
+
         log.info("Visitor 1 :\n" + obj1 + "\n- - - - - - - - - -");
         log.info("Visitor 2 :\n" + obj2 + "\n- - - - - - - - - -");
         log.info("Visitor 3 :\n" + obj3 + "\n- - - - - - - - - -");
+        log.info("Visitor 4 :\n" + obj4 + "\n- - - - - - - - - -");
+        log.info("Visitor 5 :\n" + obj5 + "\n- - - - - - - - - -");
 
     }
 
