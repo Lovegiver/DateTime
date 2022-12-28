@@ -84,11 +84,27 @@ class DateAndTimeManagementServiceImplTest {
     }
 
     @Test
-    void switchTimeStyle() {
+    void switchTimeStyleToReal() {
         dateTimeService.switchTo(DateAndTimeManagementServiceImpl.TimeStyle.REAL);
         Calendar calendar = dateTimeService.obtainCalendar();
         assertThat(calendar).isNotNull();
         assertThat(calendar.get(Calendar.HOUR_OF_DAY)).isEqualTo(LocalTime.now().getHour());
+        System.out.println("CALENDAR :\n" + calendar);
+    }
+
+    @Test
+    void switchTimeStyleToSimulated() {
+        dateTimeService.switchTo(DateAndTimeManagementServiceImpl.TimeStyle.SIMULATED, LocalDateTime.of(
+                2022,
+                7,
+                8,
+                14,
+                0,
+                1
+        ));
+        Calendar calendar = dateTimeService.obtainCalendar();
+        assertThat(calendar).isNotNull();
+        assertThat(calendar.get(Calendar.HOUR_OF_DAY)).isEqualTo(14);
         System.out.println("CALENDAR :\n" + calendar);
     }
 
