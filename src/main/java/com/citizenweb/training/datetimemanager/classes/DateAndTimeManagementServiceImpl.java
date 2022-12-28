@@ -16,11 +16,13 @@ import java.util.GregorianCalendar;
 @Log
 public class DateAndTimeManagementServiceImpl implements DateAndTimeManagementService {
 
-    private Clock realTimeClock;
-    private Clock simulatedTimeClock;
     private final long timeAtInit;
     private final ZoneId defaultZoneId;
     private final ZoneOffset defaultOffset;
+
+    private Clock realTimeClock;
+    private Clock simulatedTimeClock;
+    private LocalDateTime injectedDateTime;
     private boolean isSimulatedTime = Boolean.FALSE;
     private TimeStyle style = TimeStyle.REAL;
 
@@ -130,7 +132,7 @@ public class DateAndTimeManagementServiceImpl implements DateAndTimeManagementSe
     @Override
     public void switchTo(TimeStyle style, LocalDateTime dateTime) {
         if (this.style.equals(style)) return;
-        if (this.simulatedTimeClock == null) {
+        if (this.simulatedTimeClock == null || !dateTime.equals(this.injectedDateTime)) {
             this.simulatedTimeClock = Clock.fixed(dateTime.toInstant(this.defaultOffset), this.defaultZoneId);
         }
         this.style = style;

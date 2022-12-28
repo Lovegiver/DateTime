@@ -12,7 +12,7 @@ public class Launcher {
 
     public static void main(String[] args) throws InterruptedException {
 
-        LocalDateTime simulatedDate = LocalDateTime.of(2021, 9, 27, 13, 0, 0);
+        LocalDateTime simulatedDate = LocalDateTime.of(2021, 9, 27, 19, 0, 0);
         DateAndTimeManagementService dateTimeService = new DateAndTimeManagementServiceImpl(simulatedDate);
 
         AnyObject obj1 = AnyObject.builder()
